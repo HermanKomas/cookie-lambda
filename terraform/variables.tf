@@ -75,7 +75,7 @@ variable region {
 
 variable secret_name {
   type        = string
-  default     = "slack-secrets"
+  default     = "secrets-slack"
   description = "The Secrets Manager secret containing the Slack credentials"
 }
 
