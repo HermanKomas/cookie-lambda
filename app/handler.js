@@ -13,6 +13,13 @@ const makeAppWithToken = (token, expressReceiver) => {
   });
 }
 
+const makeAppWithTokenNew = (token, secret) => {
+  return new App({
+    token: token,
+    receiver: secret
+  });
+}
+
 const makeAppWithOauth = expressReceiver => {
   const oauth = require('./lib/oauth');
 
@@ -27,7 +34,7 @@ const makeAppWithOauth = expressReceiver => {
 }
 
 const app = (process.env.USE_OAUTH || false) ?
-  makeAppWithToken(process.env.SLACK_BOT_TOKEN, expressReceiver)
+  makeAppWithTokenNew(process.env.SLACK_BOT_TOKEN, process.env.SLACK_SIGNING_SECRET)
   : makeAppWithOauth(expressReceiver);
 
 require('./lib/bot')(app);
