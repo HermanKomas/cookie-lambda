@@ -61,13 +61,13 @@ workflows:
       - package:
           filters:
             branches:
-              only: master
+              only: CO-001
           requires:
             - build
       - deploy-development:
           filters:
             branches:
-              only: master
+              only: CO-001
           requires:
             - package
   build-and-deploy-production:
